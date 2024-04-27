@@ -28,6 +28,9 @@ class Drink(models.Model):
 
 
 class Review(models.Model):
-    drink = models.ForeignKey(Drink, on_delete=models.CASCADE) #foreign key to drink
-    energy_rating = models.PositiveIntegerField(default=0) #from 1-10
-    flavor_rating = models.PositiveIntegerField(default=0) #from 1-10
+    drink = models.ForeignKey(Drink, on_delete=models.CASCADE)
+    energy_rating = models.PositiveIntegerField(default=0, db_index=True)  # Index on energy_rating
+    flavor_rating = models.PositiveIntegerField(default=0, db_index=True)  # Index on flavor_rating
+
+    def __str__(self):
+        return f"{self.drink.name} - Energy: {self.energy_rating}, Flavor: {self.flavor_rating}"
