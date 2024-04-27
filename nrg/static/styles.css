@@ -1,0 +1,91 @@
+* {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+body {
+    margin: 30px;
+}
+
+a {
+    color: black;
+}
+
+tr,td,li {
+    padding: 10px;
+}
+
+select {
+    appearance: none; /* Hide the default arrow */
+    background-color: #f4f4f4; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    padding: 5px; /* Padding */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Border radius */
+}
+
+/* Style the dropdown arrow */
+select::after {
+    content: '\25BC'; /* Unicode character for arrow */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Ensure dropdown functionality */
+}
+
+button {
+    background-color: #007bff; /* Button background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Border radius */
+    cursor: pointer; /* Cursor style */
+    font-size: 16px; /* Font size */
+}
+
+/* Hover effect */
+button:hover {
+    background-color: #0056b3; /* Darker background color */
+}
+
+/* CSS to style the increment and decrement boxes */
+input[type="number"] {
+    appearance: textfield; /* Hide the default arrows */
+    background-color: #f4f4f4; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    padding: 5px; /* Padding */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Border radius */
+    width: 50px; /* Adjust width as needed */
+    text-align: center; /* Center text */
+}
+
+/* Increase/decrease arrow buttons */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Hide the default arrow buttons */
+    appearance: none;
+}
+
+/* Optional: Hover and focus styles */
+input[type="number"]:hover,
+input[type="number"]:focus {
+    border-color: #007bff; /* Border color on hover/focus */
+}
+
+/* CSS to style the text input boxes */
+input[type="text"] {
+    background-color: #f4f4f4; /* Background color */
+    border: 1px solid #ccc; /* Border */
+    padding: 5px; /* Padding */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Border radius */
+    width: 200px; /* Adjust width as needed */
+}
+
+/* Optional: Hover and focus styles */
+input[type="text"]:hover,
+input[type="text"]:focus {
+    border-color: #007bff; /* Border color on hover/focus */
+}

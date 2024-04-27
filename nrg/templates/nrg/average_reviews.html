@@ -1,0 +1,44 @@
+<!-- average_reviews.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Average Reviews</title>
+</head>
+<body>
+    <h1>Average Reviews</h1>
+
+    <!-- Filtering form -->
+    <form method="get">
+        <label for="min_energy">Min Energy Rating:</label>
+        <input type="number" id="min_energy" name="min_energy" step="0.1">
+        
+        <label for="max_energy">Max Energy Rating:</label>
+        <input type="number" id="max_energy" name="max_energy" step="0.1">
+        
+        <label for="min_flavor">Min Flavor Rating:</label>
+        <input type="number" id="min_flavor" name="min_flavor" step="0.1">
+        
+        <label for="max_flavor">Max Flavor Rating:</label>
+        <input type="number" id="max_flavor" name="max_flavor" step="0.1">
+        
+        <button type="submit">Filter</button>
+    </form>
+
+    <!-- Displaying the drinks with average ratings -->
+    <ul>
+        {% for drink_data in drinks_with_ratings %}
+            <li>
+                Drink: {{ drink_data.drink.name }} <br>
+                Brand: {{ drink_data.drink.brand.name }} <br>
+                Average Energy Rating: {{ drink_data.avg_energy|default:"N/A" }} <br>
+                Average Flavor Rating: {{ drink_data.avg_flavor|default:"N/A" }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

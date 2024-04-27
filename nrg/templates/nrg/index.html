@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Reviews</title>
+</head>
+<body>
+    <h1>Energy Drink Reviews</h1>
+    <h2><a href="{% url 'average_reviews' %}">Average Reviews</a></h2>
+    <p><a href="{% url 'create_review' %}">Create a Review</a></p>
+    <p><a href="{% url 'register_drink' %}">Register a Drink</a></p>
+    <table>
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Drink</th>
+                <th>Energy Rating</th>
+                <th>Flavor Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr>
+                <td><a href="{% url 'brand_detail' brand_id=review.drink.brand_id %}">
+                    {{ review.drink.brand.name }}
+                </a></td>
+                <td>{{ review.drink.name }}</td>
+                <td>{{ review.energy_rating }}</td>
+                <td>{{ review.flavor_rating }}</td>
+                <td>
+                    <a href="{% url 'update_review' review.id %}">Update</a> |
+                    <a href="{% url 'delete_review' review.id %}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

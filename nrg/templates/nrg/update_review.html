@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>Update Review</title>
+</head>
+<body>
+    <h1>Update Review</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="energy_rating">Energy Rating:</label>
+        <input type="number" id="energy_rating" name="energy_rating" value="{{ review.energy_rating }}">
+        <p></p>
+        <label for="flavor_rating">Flavor Rating:</label>
+        <input type="number" id="flavor_rating" name="flavor_rating" value="{{ review.flavor_rating }}">
+        <p></p>
+        <button type="submit">Update Review</button>
+    </form>
+</body>
+</html>

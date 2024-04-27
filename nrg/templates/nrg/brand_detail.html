@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <title>{{ brand.name }}</title>
+</head>
+<body>
+    <h1>{{ brand.name }}</h1>
+    <h3>{{ drink.0.name }}</h3>
+    <h2>Average rating of each drink</h2>
+    <ul>
+        {% for drink in drinks %}
+        <li>{{ drink.1 }} -
+            {% for rating in drink_ratings %}
+                {% if rating.drink_id == drink.0 %}
+                    Energy Rating: {{ rating.avg_energy_rating|default:"N/A" }}, Flavor Rating: {{ rating.avg_flavor_rating|default:"N/A" }}
+                {% endif %}
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
